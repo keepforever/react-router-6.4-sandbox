@@ -1,14 +1,20 @@
 import React from 'react'
-import { ActionFunction, Form, useActionData, useNavigate } from 'react-router-dom'
+import { ActionFunction, Form, redirect, useActionData, useNavigate, useNavigation } from 'react-router-dom'
 import '../styles/modal.css'
 
 type Props = {}
 
 export const TodoNew: React.FC<Props> = () => {
   const navigate = useNavigate()
-  const actionData = useActionData()
+  const { formData, state: navState } = useNavigation()
+  const formEntries = Object.fromEntries(formData || []) as unknown as any
 
-  console.log('\n', `actionData = `, actionData, '\n')
+  console.group(`%cTodoNew.tsx`, 'color: #ffffff; font-size: 13px; font-weight: bold;')
+  console.log('\n', `navState = `, navState, '\n')
+  console.log('\n', `formEntries = `, formEntries, '\n')
+  console.groupEnd()
+
+  const isSubmitting = navState === 'submitting'
 
   return (
     <div className="modal-overlay">
@@ -40,6 +46,8 @@ export const TodoNew: React.FC<Props> = () => {
             />
           </div>
 
+          {isSubmitting && <div className="text-4xl">Submitting...</div>}
+
           <div className="flex justify-end mt-6">
             <button
               onClick={() => navigate(-1)}
@@ -65,15 +73,9 @@ export const action: ActionFunction = async ({ params, request }) => {
   console.log('\n', `hello new Todo action `, '\n')
   const formData = await request.formData()
   const formEntries = Object.fromEntries(formData) as unknown as any
-
-  const response = new Response(JSON.stringify(formEntries), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json; utf-8',
-    },
-  })
-
-  return response
+  // wait for 2 seconds to simulate a slow network
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  return redirect('/todos')
 }
 
 // export const TodoNew: React.FC<Props> = () => {
