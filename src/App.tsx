@@ -33,7 +33,7 @@ export const App = () => {
           <Link to="/todos/new">new todo</Link>
         </div>
       </nav>
-      {/* <pre>{JSON.stringify(loaderData, null, 2) || "nothing to preview"}</pre> */}
+
       <Outlet />
     </div>
   )

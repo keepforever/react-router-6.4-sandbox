@@ -12,7 +12,7 @@ export const throwIf404 = (res: Response) => {
   }
 }
 
-export const throw404 = (res: Response) => {
+export const throw404 = (res?: Response) => {
   throw json(
     {
       message: 'There has been a 404',

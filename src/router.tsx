@@ -4,7 +4,7 @@ import { Todos, loader as todosLoader } from './components/Todos'
 import { loader as alphaChildLoader, TodoDetail } from './components/TodoDetail'
 import { loader as appLoader, App, AppError } from './App'
 
-import { TodoNew, action as newTodoAction } from './components/TodoNew'
+import { TodoNew, TodoNewError, action as newTodoAction } from './components/TodoNew'
 
 export const router = createBrowserRouter(
   [
@@ -26,6 +26,7 @@ export const router = createBrowserRouter(
               path: `new`,
               element: <TodoNew />,
               action: newTodoAction,
+              errorElement: <TodoNewError />,
             },
             {
               id: 'todos/:id',
