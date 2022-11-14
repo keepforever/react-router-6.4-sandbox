@@ -5,6 +5,7 @@ import {
   json,
   redirect,
   useActionData,
+  useMatches,
   useNavigate,
   useNavigation,
   useRouteError,
@@ -20,10 +21,18 @@ export const TodoNew: React.FC<Props> = () => {
   const { formData, state: navState } = useNavigation()
   const formEntries = Object.fromEntries(formData || []) as unknown as any
 
+  /* leverage useMatches to have access to any/all parent route data.  Can target by 'id' */
+  const matches = useMatches()
+  const rootLoaderData = matches.find(match => match.id === 'root')?.data
+  const todosLoaderData = matches.find(match => match.id === 'todos')?.data
+
   console.group(`%cTodoNew.tsx`, 'color: #ffffff; font-size: 13px; font-weight: bold;')
   console.log('\n', `navState = `, navState, '\n')
   console.log('\n', `formEntries = `, formEntries, '\n')
   console.log('\n', `actionData = `, actionData, '\n')
+  console.log('\n', `matches = `, matches, '\n')
+  console.log('\n', `rootLoaderData = `, rootLoaderData, '\n')
+  console.log('\n', `todosLoaderData = `, todosLoaderData, '\n')
   console.groupEnd()
 
   const isSubmitting = navState === 'submitting'

@@ -13,7 +13,7 @@ export const Todos: React.FC<Props> = props => {
       }}
     >
       <h3>Todos is light green</h3>
-      <div className="flex justify-around pb-4">
+      <div className="flex justify-around pb-4 flex-wrap gap-2">
         {data.map((todo, index) => {
           return (
             <Link
