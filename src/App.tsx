@@ -1,4 +1,5 @@
-import { ActionFunction, json, Link, LoaderFunction, Outlet, useLoaderData, useRouteError } from 'react-router-dom'
+import { json, Link, LoaderFunction, Outlet, useLoaderData, useRouteError } from 'react-router-dom'
+import './index.css'
 
 export const loader: LoaderFunction = async ({ params, request }) => {
   const data = { foo: 'bar' }
@@ -11,14 +12,13 @@ export const App = () => {
 
   return (
     <div
-      className="App"
+      className="bg-blue-300"
       style={{
         outline: '1px solid white',
         padding: 3,
         marginLeft: 'auto',
         marginRight: 'auto',
         maxWidth: '70vw',
-        backgroundColor: 'lightblue',
       }}
     >
       <h2>App.tsx is light blue</h2>
