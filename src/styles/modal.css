@@ -1,0 +1,54 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 26, 36, 0.25);
+}
+
+.modal {
+  background: #fff;
+  width: 670px;
+  padding: 18px 24px;
+  position: absolute;
+  top: 20%;
+  left: calc(50% - 335px);
+  border-radius: 11px;
+  text-align: left;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #daddde;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #daddde;
+  padding-top: 18px;
+  margin-top: 18px;
+}
+
+.modal-form-section:last-child {
+  margin-top: 18px;
+}
+
+.modal-form-section input {
+  width: 100%;
+}
+
+.modal-form-section textarea {
+  width: 100%;
+  min-height: 140px;
+}
