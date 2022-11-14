@@ -20,6 +20,7 @@ export const TodoNew: React.FC<Props> = () => {
     <div className="modal-overlay">
       <div className="modal">
         <Form method="post">
+          <p className="text-2xl mb-2">New Todo Modal</p>
           <div className="mb-2">
             <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
               Last name
@@ -70,11 +71,22 @@ export const TodoNew: React.FC<Props> = () => {
 }
 
 export const action: ActionFunction = async ({ params, request }) => {
-  console.log('\n', `hello new Todo action `, '\n')
   const formData = await request.formData()
   const formEntries = Object.fromEntries(formData) as unknown as any
-  // wait for 2 seconds to simulate a slow network
+  console.log(`
+  #########################################################
+                  TodoNew action
+  #########################################################
+  `)
+  console.log('\n', `formEntries = `, formEntries, '\n')
+  console.log(`
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  #########################################################
+  `)
+  /* mutate server data */
+  // wait for 2 seconds to simulate a mutation
   await new Promise(resolve => setTimeout(resolve, 2000))
+
   return redirect('/todos')
 }
 

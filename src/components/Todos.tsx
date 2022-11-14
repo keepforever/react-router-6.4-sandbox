@@ -13,15 +13,14 @@ export const Todos: React.FC<Props> = props => {
       }}
     >
       <h3>Todos is light green</h3>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-        }}
-      >
+      <div className="flex justify-around pb-4">
         {data.map((todo, index) => {
           return (
-            <Link key={todo.title} to={String(todo.id)}>
+            <Link
+              className="inline-flex bg-origin-border px-5 py-3 border border-transparent text-lg text-black font-medium rounded-md shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-otc-mustard no-underline"
+              key={todo.title}
+              to={String(todo.id)}
+            >
               todo: {todo.id}
             </Link>
           )

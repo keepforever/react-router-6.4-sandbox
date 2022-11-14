@@ -8,7 +8,8 @@ export const TodoDetail: React.FC<Props> = props => {
   const todo = useLoaderData() as any
   return (
     <div style={{ backgroundColor: 'coral', padding: '12px 10px', marginTop: 12 }}>
-      <h2>Title: {todo.title}</h2>
+      <h2 className="text-2xl">#: {todo.id}</h2>
+      <h2 className="text-2xl">Title: {todo.title}</h2>
       <small>TodoDetail is coral</small>
     </div>
   )

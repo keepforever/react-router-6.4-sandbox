@@ -9,17 +9,17 @@ import { TodoNew, action as newTodoAction } from './components/TodoNew'
 export const router = createBrowserRouter(
   [
     {
-      path: `/`,
-      element: <App />,
-      loader: appLoader,
-      errorElement: <AppError />,
       id: 'root',
+      element: <App />,
+      errorElement: <AppError />,
+      loader: appLoader,
+      path: `/`,
       children: [
         {
+          id: 'todos',
           path: `todos`,
           element: <Todos />,
           loader: todosLoader,
-          id: 'todos',
           children: [
             {
               id: 'todos/new',
