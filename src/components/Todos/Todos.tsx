@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { ActionFunction, json, Link, LoaderFunction, Outlet, useLoaderData, Await, defer } from 'react-router-dom'
 
 import { throw404, throwIf404 } from '../../utils'
-import { ErrorElement } from './components'
+import { ErrorElement, LoadingElement } from './components'
 import { Todo } from '../../interfaces'
 import { getSlowTodos } from '../../api'
 import { tailwindStylesHelper } from '../../styles'
@@ -40,13 +40,7 @@ export const Todos: React.FC<Props> = props => {
       }}
     >
       <h3>Todos is light green</h3>
-      <Suspense
-        fallback={
-          <>
-            <h1 className="text-3xl">Loading...</h1>
-          </>
-        }
-      >
+      <Suspense fallback={<LoadingElement />}>
         <Await resolve={loaderData.todosSlow} errorElement={<ErrorElement />}>
           {todos => (
             <div className="flex justify-around pb-4 flex-wrap gap-2">
