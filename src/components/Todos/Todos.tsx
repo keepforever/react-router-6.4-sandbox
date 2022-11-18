@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { ActionFunction, json, Link, LoaderFunction, Outlet, useLoaderData, Await, defer } from 'react-router-dom'
 
 import { throw404, throwIf404 } from '../../utils'
-import { ErrorElement, LoadingElement } from './components'
+import { AsyncTodosRenderPropAlternative, ErrorElement, LoadingElement } from './components'
 import { Todo } from '../../interfaces'
 import { getSlowTodos } from '../../api'
 import { tailwindStylesHelper } from '../../styles'
@@ -34,21 +34,28 @@ export const Todos: React.FC<Props> = props => {
   console.log('\n', `loaderData = `, loaderData, '\n')
 
   return (
-    <div
-      style={{
-        backgroundColor: 'lightgreen',
-      }}
-    >
-      <h3>Todos is light green</h3>
+    <div className="bg-green-300 p-6 mx-auto max-w-4xl ">
+      <h3 className="text-3xl font-bold">Todos route is light green</h3>
+
+      <p className="text-2xl mt-8">Slow Todos useAsyncValue:</p>
+
       <Suspense fallback={<LoadingElement />}>
         <Await resolve={loaderData.todosSlow} errorElement={<ErrorElement />}>
-          {todos => (
+          <AsyncTodosRenderPropAlternative />
+        </Await>
+      </Suspense>
+
+      <p className="text-2xl mt-8">Slow Todos render props:</p>
+
+      <Suspense fallback={<LoadingElement />}>
+        <Await resolve={loaderData.todosSlow} errorElement={<ErrorElement />}>
+          {(todos: Todo[]) => (
             <div className="flex justify-around pb-4 flex-wrap gap-2">
               {(todos || [])
-                ?.filter((t: any, index: any) => {
+                ?.filter((t, index) => {
                   return index < 5
                 })
-                ?.map((todo: any, index: number) => {
+                ?.map(todo => {
                   return (
                     <Link className={tailwindStylesHelper.link} key={todo.title} to={String(todo.id)}>
                       slow: {todo.id}
