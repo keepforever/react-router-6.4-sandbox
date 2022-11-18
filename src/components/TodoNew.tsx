@@ -155,28 +155,3 @@ export const TodoNewError: React.FC<ErrorProps> = props => {
     </div>
   )
 }
-/* TodoNewBug component is an example of a bug that breaks default browser behavior and, by consequence, react-router action/loader paradigm */
-export const TodoNewBug: React.FC<Props> = () => {
-  const navigate = useNavigate()
-
-  return (
-    <div className="modal-overlay">
-      <div
-        className="modal"
-        onClick={ev => {
-          console.log('\n', `❌ Bug starts here`, '\n')
-          ev.preventDefault()
-          ev.stopPropagation()
-        }}
-      >
-        {/* form to create a dodo */}
-        <Form method="post">
-          <input type="text" placeholder="Go on..." />
-          <button type="submit">Submit</button>
-        </Form>
-
-        <button onClick={() => navigate(-1)}>Cancel</button>
-      </div>
-    </div>
-  )
-}

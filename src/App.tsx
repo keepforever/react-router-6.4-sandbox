@@ -12,7 +12,9 @@ export const loader: LoaderFunction = async ({ params, request }) => {
 export const App = () => {
   const loaderData = useLoaderData()
   const context = useContext(StateContext)
-  // console.log('\n', `context?.auth = `, context?.auth, '\n')
+  console.group(`%cApp.tsx`, 'color: yellow; font-size: 13px; font-weight: bold;')
+  console.log('\n', `context?.auth = `, context?.auth, '\n')
+  console.groupEnd()
   return (
     <div className="bg-blue-300 p-6 mx-auto max-w-4xl h-screen">
       <h2>App.tsx is light blue</h2>

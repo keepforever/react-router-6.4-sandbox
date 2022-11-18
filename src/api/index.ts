@@ -13,3 +13,13 @@ export const getSlowTodos = async () => {
   // const payload = await response.json()
   // return payload
 }
+
+export const getSlowTodo = async (id: string) => {
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+  // console.log('\n', `response = `, response, '\n')
+  if (!response.ok) {
+    throw new Response('Failed to fetch post.', { status: 500 })
+  }
+  return response.json()
+}

@@ -31,7 +31,7 @@ type Props = {}
 
 export const Todos: React.FC<Props> = props => {
   const loaderData = useLoaderData() as { todosSlow: Promise<Todo[]>; todosFast: Todo[] }
-  console.log('\n', `loaderData = `, loaderData, '\n')
+  // console.log('\n', `loaderData = `, loaderData, '\n')
 
   return (
     <div className="bg-green-300 p-6 mx-auto max-w-4xl ">
