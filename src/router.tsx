@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Todos, loader as todosLoader } from './components/Todos'
 
 import { loader as alphaChildLoader, TodoDetail } from './components/TodoDetail'
 import { loader as appLoader, App, AppError } from './App'
-import { TodoNew, TodoNewError, action as newTodoAction, TodoNewBug } from './components/TodoNew'
+import { TodoNew, TodoNewError, action as newTodoAction } from './components/TodoNew'
+import { Todos, loader as todosLoader } from './components/Todos'
 
 export const router = createBrowserRouter(
   [
