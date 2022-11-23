@@ -5,6 +5,7 @@ import { TodoNew, TodoNewError, action as newTodoAction } from './components/Tod
 import { Todos, loader as todosLoader } from './components/Todos'
 
 import { TodoDetailDefer, loader as todoLoaderDefer } from './components/TodoDetailDefer'
+import { FormTest } from './components/FormTest'
 // import {  TodoDetail, loader as todoLoader } from './components/TodoDetail'
 
 export const router = createBrowserRouter(
@@ -38,6 +39,12 @@ export const router = createBrowserRouter(
               loader: todoLoaderDefer,
             },
           ],
+        },
+
+        {
+          id: 'form-test',
+          path: `form-test`,
+          element: <FormTest />,
         },
       ],
     },

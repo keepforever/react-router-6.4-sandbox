@@ -11,9 +11,10 @@ export const loader: LoaderFunction = async ({ params, request }) => {
 
 export const App = () => {
   const loaderData = useLoaderData()
-  const context = useContext(StateContext)
+  // const context = useContext(StateContext)
   console.group(`%cApp.tsx`, 'color: yellow; font-size: 13px; font-weight: bold;')
-  console.log('\n', `context?.auth = `, context?.auth, '\n')
+  // console.log('\n', `context?.auth = `, context?.auth, '\n')
+  console.log('\n', `hello App.tsx `, '\n')
   console.groupEnd()
   return (
     <div className="bg-blue-300 p-6 mx-auto max-w-4xl h-screen">
@@ -28,9 +29,11 @@ export const App = () => {
           <Link to="/">HOME</Link>
           <Link to="/todos">todos</Link>
           <Link to="/todos/new">new todo</Link>
+          <Link to="/form-test">Form Test</Link>
           <button
             onClick={() => {
-              context?.setAuth?.('token')
+              // context?.setAuth?.('token')
+              console.log('\n', `set token on click `, '\n')
             }}
           >
             Set Auth
