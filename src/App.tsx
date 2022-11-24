@@ -10,6 +10,14 @@ export const loader: LoaderFunction = async ({ params, request }) => {
 }
 
 export const App = () => {
+  /* TODO: - invoking useLoaderData will cause App.tsx to re-render on EVERY
+  navigation, even when it only affects the outlet.
+  
+  To avoid re-rendering do not call useLoaderData.
+  
+  This way, child routes can still access the loader data from App.tsx via useMatches()
+  hook and targeting the "id" of the root loader which, in this case, is "root".
+  */
   const loaderData = useLoaderData()
   // const context = useContext(StateContext)
   console.group(`%cApp.tsx`, 'color: yellow; font-size: 13px; font-weight: bold;')
